@@ -15,14 +15,15 @@ import {
 } from './components/export';
 import {VERSION} from './version';
 import './styles/export';
+import { MyButton } from 'housex-ui';
 
 const {Toolbar} = ToolbarComponents;
 const {Sidebar} = SidebarComponents;
 const {FooterBar} = FooterBarComponents;
 
 const toolbarW = 50;
-const sidebarW = 0;
-const footerBarH= 0;
+const sidebarW = 300;
+const footerBarH= 20;
 
 const wrapperStyle = {
   display: 'flex',
@@ -67,10 +68,11 @@ class ReactPlanner extends Component {
 
     return (
       <div style={{...wrapperStyle, height}}>
+        <MyButton/>
         <Toolbar width={toolbarW} height={toolbarH} state={extractedState} {...props} />
         <Content width={contentW} height={contentH} state={extractedState} {...props} onWheel={event => event.preventDefault()} />
-        {/*<Sidebar width={sidebarW} height={sidebarH} state={extractedState} {...props} />*/}
-        {/*<FooterBar width={width} height={footerBarH} state={extractedState} {...props} />*/}
+        <Sidebar width={sidebarW} height={sidebarH} state={extractedState} {...props} />
+        <FooterBar width={width} height={footerBarH} state={extractedState} {...props} />
       </div>
     );
   }

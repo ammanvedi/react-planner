@@ -33,7 +33,7 @@ module.exports = (env, self) => {
     resolve: {
       extensions: ['.js', '.jsx'],
       alias: {
-        'react-planner': path.join(__dirname, '../src/index')
+        'react-planner': path.join(__dirname, '../build/index')
       }
     },
     module: {
