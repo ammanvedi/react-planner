@@ -20,7 +20,7 @@ import { objectsMap } from './utils/objects-utils';
 import { ToolbarComponents, Content, SidebarComponents, FooterBarComponents } from './components/export';
 import { VERSION } from './version';
 import './styles/export';
-import { MyButton } from 'housex-ui';
+import { Button } from 'housex-ui/components/button/button.tsx';
 const { Toolbar } = ToolbarComponents;
 const { Sidebar } = SidebarComponents;
 const { FooterBar } = FooterBarComponents;
@@ -57,7 +57,7 @@ class ReactPlanner extends Component {
         let sidebarH = height - footerBarH;
         let extractedState = stateExtractor(state);
         return (<div style={Object.assign(Object.assign({}, wrapperStyle), { height })}>
-        <MyButton />
+        <Button />
         <Toolbar width={toolbarW} height={toolbarH} state={extractedState} {...props}/>
         <Content width={contentW} height={contentH} state={extractedState} {...props} onWheel={event => event.preventDefault()}/>
         <Sidebar width={sidebarW} height={sidebarH} state={extractedState} {...props}/>

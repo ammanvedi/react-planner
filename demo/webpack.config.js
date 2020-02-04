@@ -31,13 +31,14 @@ module.exports = (env, self) => {
       contentBase: path.join(__dirname, './dist'),
     },
     resolve: {
-      extensions: ['.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
       alias: {
-        'react-planner': path.join(__dirname, '../build/index')
+        'react-planner': path.join(__dirname, '../src/index')
       }
     },
     module: {
-      rules: [{
+      rules: [
+        {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [{
@@ -49,7 +50,7 @@ module.exports = (env, self) => {
             ],
             'presets': [
               'env',
-              'react'
+              'react',
             ]
           }
 
@@ -71,7 +72,12 @@ module.exports = (env, self) => {
           { loader: 'style-loader/url' },
           { loader: 'file-loader' }
         ]
-      }]
+      },
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+        },
+      ]
     },
     plugins: [
       new HtmlWebpackPlugin({
