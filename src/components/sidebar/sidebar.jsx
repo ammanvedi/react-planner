@@ -10,6 +10,12 @@ import PanelLayerElements from './panel-layer-elements';
 import * as SharedStyle from '../../shared-style';
 import If from '../../utils/react-if';
 
+import { ButtonNormal } from "housex-ui/components/button/variant/normal";
+import { IconWall } from "housex-ui/components/icons/icon/wall";
+import { ButtonSize } from "housex-ui/components/button/button.types";
+import { ButtonOutline } from "housex-ui/components/button/variant/outline";
+import { Color } from 'housex-ui/components/styles/colors';
+
 const STYLE = {
   backgroundColor: SharedStyle.PRIMARY_COLOR.main,
   display: 'block',
@@ -78,6 +84,10 @@ export default function Sidebar({ state, width, height, sidebarComponents }) {
       onKeyUp={event => event.stopPropagation()}
       className="sidebar"
     >
+      <ButtonOutline inline={false} aria={{ label: '' }} buttonSize={ButtonSize.SMALL} disabled={false} onClick={() => {}}>
+        <IconWall hexColor={Color.black} />
+        Add Wall
+      </ButtonOutline>
       {sorter.sort(sortButtonsCb).map(mapButtonsCb)}
     </aside>
   );

@@ -15,7 +15,6 @@ import {
 } from './components/export';
 import {VERSION} from './version';
 import './styles/export';
-import { Button } from 'housex-ui/components/button/button.tsx';
 
 const {Toolbar} = ToolbarComponents;
 const {Sidebar} = SidebarComponents;
@@ -68,7 +67,6 @@ class ReactPlanner extends Component {
 
     return (
       <div style={{...wrapperStyle, height}}>
-        <Button/>
         <Toolbar width={toolbarW} height={toolbarH} state={extractedState} {...props} />
         <Content width={contentW} height={contentH} state={extractedState} {...props} onWheel={event => event.preventDefault()} />
         <Sidebar width={sidebarW} height={sidebarH} state={extractedState} {...props} />
