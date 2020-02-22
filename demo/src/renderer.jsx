@@ -5,6 +5,9 @@ import Immutable, {Map} from 'immutable';
 import immutableDevtools from 'immutable-devtools';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import { ThemeProvider } from "styled-components";
+import { defaultTheme } from "housex-ui/components/theme/default";
+import { GlobalTypography } from "housex-ui/components/typography/typography";
 
 import MyCatalog from './catalog/mycatalog';
 
@@ -79,18 +82,21 @@ let toolbarButtons = [
 ReactDOM.render(
   (
     <Provider store={store}>
-      <ContainerDimensions>
-        {({width, height}) =>
-          <ReactPlanner
-            catalog={MyCatalog}
-            width={width}
-            height={height}
-            plugins={plugins}
-            toolbarButtons={toolbarButtons}
-            stateExtractor={state => state.get('react-planner')}
-          />
-        }
-      </ContainerDimensions>
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalTypography/>
+        <ContainerDimensions>
+          {({width, height}) =>
+            <ReactPlanner
+              catalog={MyCatalog}
+              width={width}
+              height={height}
+              plugins={plugins}
+              toolbarButtons={toolbarButtons}
+              stateExtractor={state => state.get('react-planner')}
+            />
+          }
+        </ContainerDimensions>
+      </ThemeProvider>
     </Provider>
   ),
   document.getElementById('app')

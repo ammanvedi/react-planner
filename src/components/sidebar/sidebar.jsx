@@ -10,10 +10,10 @@ import PanelLayerElements from './panel-layer-elements';
 import * as SharedStyle from '../../shared-style';
 import If from '../../utils/react-if';
 
-import { ButtonNormal } from "housex-ui/components/button/variant/normal";
+import { Icon16 } from "housex-ui/components/icons/sizes/icon-16";
 import { IconWall } from "housex-ui/components/icons/icon/wall";
-import { ButtonSize } from "housex-ui/components/button/button.types";
-import { ButtonOutline } from "housex-ui/components/button/variant/outline";
+import { ButtonSize } from "housex-ui/components/input/button/button.types";
+import { ButtonOutline } from "housex-ui/components/input/button/variant/outline";
 import { Color } from 'housex-ui/components/styles/colors';
 
 const STYLE = {
@@ -85,7 +85,9 @@ export default function Sidebar({ state, width, height, sidebarComponents }) {
       className="sidebar"
     >
       <ButtonOutline inline={false} aria={{ label: '' }} buttonSize={ButtonSize.SMALL} disabled={false} onClick={() => {}}>
-        <IconWall hexColor={Color.black} />
+        <Icon16>
+          <IconWall hexColor={Color.black} />
+        </Icon16>
         Add Wall
       </ButtonOutline>
       {sorter.sort(sortButtonsCb).map(mapButtonsCb)}

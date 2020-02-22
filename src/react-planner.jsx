@@ -13,21 +13,21 @@ import {
   SidebarComponents,
   FooterBarComponents
 } from './components/export';
+import {
+  DoubleSidebarCenterContent,
+  DoubleSidebarContainer,
+  DoubleSidebarContent,
+  DoubleSidebarNavigation,
+  DoubleSidebarSidebar
+} from "housex-ui/components/layout/double-sidebar/double-sidebar";
 import {VERSION} from './version';
 import './styles/export';
+import ContainerDimensions from "react-container-dimensions";
+import {NavigationBar} from "./components/navigation-bar/navigation-bar";
 
 const {Toolbar} = ToolbarComponents;
 const {Sidebar} = SidebarComponents;
 const {FooterBar} = FooterBarComponents;
-
-const toolbarW = 50;
-const sidebarW = 300;
-const footerBarH= 20;
-
-const wrapperStyle = {
-  display: 'flex',
-  flexFlow: 'row nowrap'
-};
 
 class ReactPlanner extends Component {
 
@@ -58,20 +58,30 @@ class ReactPlanner extends Component {
   render() {
     let {width, height, state, stateExtractor, ...props} = this.props;
 
-    let contentW = width - toolbarW - sidebarW;
-    let toolbarH = height - footerBarH;
-    let contentH = height - footerBarH;
-    let sidebarH = height - footerBarH;
-
     let extractedState = stateExtractor(state);
 
     return (
-      <div style={{...wrapperStyle, height}}>
-        <Toolbar width={toolbarW} height={toolbarH} state={extractedState} {...props} />
-        <Content width={contentW} height={contentH} state={extractedState} {...props} onWheel={event => event.preventDefault()} />
-        <Sidebar width={sidebarW} height={sidebarH} state={extractedState} {...props} />
-        <FooterBar width={width} height={footerBarH} state={extractedState} {...props} />
-      </div>
+      <DoubleSidebarContainer>
+        <DoubleSidebarNavigation>
+          <NavigationBar/>
+        </DoubleSidebarNavigation>
+        <DoubleSidebarContent>
+          <DoubleSidebarSidebar></DoubleSidebarSidebar>
+          <DoubleSidebarCenterContent>
+            <ContainerDimensions>
+              <Content state={extractedState} {...props} onWheel={event => event.preventDefault()} />
+            </ContainerDimensions>
+          </DoubleSidebarCenterContent>
+          <DoubleSidebarSidebar></DoubleSidebarSidebar>
+        </DoubleSidebarContent>
+        {/*<div style={{...wrapperStyle, height}}>*/}
+        {/*  <Toolbar width={toolbarW} height={toolbarH} state={extractedState} {...props} />*/}
+
+        {/*  <Sidebar width={sidebarW} height={sidebarH} state={extractedState} {...props} />*/}
+        {/*  <FooterBar width={width} height={footerBarH} state={extractedState} {...props} />*/}
+        {/*</div>*/}
+      </DoubleSidebarContainer>
+
     );
   }
 }
